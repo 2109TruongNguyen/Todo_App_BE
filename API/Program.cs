@@ -71,7 +71,7 @@ builder.Services.AddJwtAuthentication(builder.Configuration);
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowSpecificOrigins",
-        policy => policy.WithOrigins("http://localhost:3000")
+        policy => policy.WithOrigins("http://localhost:3000", "https://todo-app-fe-y2al.onrender.com")
             .AllowAnyMethod()
             .AllowAnyHeader()
             .AllowCredentials());
