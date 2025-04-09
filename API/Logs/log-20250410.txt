@@ -1,0 +1,2 @@
+2025-04-10 00:31:34.142 +07:00 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-04-10 00:32:58.116 +07:00 [WRN] Failed to determine the https port for redirect.

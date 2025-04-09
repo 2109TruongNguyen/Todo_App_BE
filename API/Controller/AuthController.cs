@@ -73,7 +73,7 @@ public class AuthController : ControllerBase
     {
         var properties = new AuthenticationProperties
         {
-            RedirectUri = Url.Action(nameof(GoogleCallback))
+            RedirectUri = Url.Action(nameof(GoogleCallback), "Auth", null, Request.Scheme)
         };
         return Challenge(properties, GoogleDefaults.AuthenticationScheme);
     }
