@@ -13,3 +13,4 @@ D:\FullStack\Todo-App\Backend-TodoApp\Todo-Application\Application\obj\Debug\net
 D:\FullStack\Todo-App\Backend-TodoApp\Todo-Application\Application\bin\Debug\net9.0\Infrastructure.dll
 D:\FullStack\Todo-App\Backend-TodoApp\Todo-Application\Application\bin\Debug\net9.0\Infrastructure.pdb
 D:\FullStack\Todo-App\Backend-TodoApp\Todo-Application\Application\obj\Debug\net9.0\Applicat.44B5EDA2.Up2Date
+D:\FullStack\Todo-App\Backend-TodoApp\Todo-Application\Application\obj\Debug\net9.0\Application.sourcelink.json

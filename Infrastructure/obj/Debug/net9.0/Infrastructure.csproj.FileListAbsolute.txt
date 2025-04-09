@@ -10,3 +10,4 @@ D:\FullStack\Todo-App\Backend-TodoApp\Todo-Application\Infrastructure\obj\Debug\
 D:\FullStack\Todo-App\Backend-TodoApp\Todo-Application\Infrastructure\obj\Debug\net9.0\refint\Infrastructure.dll
 D:\FullStack\Todo-App\Backend-TodoApp\Todo-Application\Infrastructure\obj\Debug\net9.0\Infrastructure.pdb
 D:\FullStack\Todo-App\Backend-TodoApp\Todo-Application\Infrastructure\obj\Debug\net9.0\ref\Infrastructure.dll
+D:\FullStack\Todo-App\Backend-TodoApp\Todo-Application\Infrastructure\obj\Debug\net9.0\Infrastructure.sourcelink.json
