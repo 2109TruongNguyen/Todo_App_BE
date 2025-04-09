@@ -75,6 +75,7 @@ public class AuthController : ControllerBase
         {
             RedirectUri = Url.Action(nameof(GoogleCallback), "Auth", null, Request.Scheme)
         };
+        Console.WriteLine("Redirect URI: " + Url.Action(nameof(GoogleCallback), "Auth", null, Request.Scheme));
         return Challenge(properties, GoogleDefaults.AuthenticationScheme);
     }
     
@@ -107,7 +108,7 @@ public class AuthController : ControllerBase
         var googleId = claims?.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
 
         if (string.IsNullOrEmpty(email))
-        {
+        { 
             return Ok(new ApiResponse<object?>(
                 HttpStatusCode.BadRequest,
                 "Cannot get email from Google",
