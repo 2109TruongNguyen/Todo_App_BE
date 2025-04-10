@@ -9,7 +9,7 @@ public interface IAuthService
 {
     public Task<ApiResponse<AuthenticationResponse?>> LoginAsync(AuthenticationRequest authenticationRequest);
     public Task<ApiResponse<Object?>> RegisterAsync(RegisterRequest registerRequest);
-    
     public Task<ApiResponse<Dictionary<string, string>>?> RefreshTokenAsync(string refreshToken);
     public Task<ApiResponse<object?>> LogoutAsync();
+    public Task<AuthenticationResponse?> GoogleLoginAsync(GoogleAuthenticationRequest request);
 }

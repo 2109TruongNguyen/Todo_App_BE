@@ -2,3 +2,32 @@
 2025-04-10 00:32:58.116 +07:00 [WRN] Failed to determine the https port for redirect.
 2025-04-10 00:54:17.879 +07:00 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
 2025-04-10 00:55:22.085 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-04-10 00:55:58.255 +07:00 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-04-10 22:43:02.992 +07:00 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-04-10 22:43:19.585 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-04-10 22:43:48.279 +07:00 [WRN] '.AspNetCore.Correlation.tR0aFqOko8d_ygF2eKSRf4PiLnuKZteneYW947xmhZs' cookie not found.
+2025-04-10 22:43:48.282 +07:00 [ERR] An unhandled exception occurred.
+Microsoft.AspNetCore.Authentication.AuthenticationFailureException: An error was encountered while handling the remote login.
+ ---> Microsoft.AspNetCore.Authentication.AuthenticationFailureException: Correlation failed.
+   --- End of inner exception stack trace ---
+   at Microsoft.AspNetCore.Authentication.RemoteAuthenticationHandler`1.HandleRequestAsync()
+   at Microsoft.AspNetCore.Authentication.AuthenticationMiddleware.Invoke(HttpContext context)
+   at API.Middelwares.ExceptionHandlerMiddelware.InvokeAsync(HttpContext context)
+2025-04-10 22:44:31.835 +07:00 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-04-10 22:44:36.747 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-04-10 22:47:51.272 +07:00 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-04-10 22:48:09.621 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-04-10 22:51:06.204 +07:00 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-04-10 22:51:11.272 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-04-10 22:53:22.955 +07:00 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-04-10 22:53:38.731 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-04-10 22:57:27.400 +07:00 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-04-10 22:57:33.405 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-04-10 22:58:42.362 +07:00 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-04-10 22:58:50.609 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-04-10 23:00:50.011 +07:00 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-04-10 23:00:55.142 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-04-10 23:03:02.798 +07:00 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-04-10 23:03:11.806 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-04-10 23:05:20.613 +07:00 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-04-10 23:05:28.909 +07:00 [WRN] Failed to determine the https port for redirect.

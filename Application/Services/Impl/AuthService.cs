@@ -1,10 +1,10 @@
 ﻿using System.Net;
-using System.Runtime.InteropServices.JavaScript;
 using Application.Constants;
 using Application.Dto.Common;
 using Application.Dto.Request;
 using Application.Dto.Response;
 using Application.Services.Def;
+using Application.Utils;
 using Infrastructure.Entities;
 using Microsoft.AspNetCore.Identity;
 
@@ -124,5 +124,48 @@ public class AuthService : IAuthService
             "Logout successful",
             null
         );
+    }
+
+    public async Task<AuthenticationResponse?> GoogleLoginAsync(GoogleAuthenticationRequest request)
+    {
+        var user = _userManager.FindByEmailAsync(request.Email!);
+        
+        if (user.Result != null)
+        {
+            var authenticationResponse = new AuthenticationResponse()
+            {
+                accessToken = _jwtService.GenerateAccessToken(user.Result),
+                refreshToken = _jwtService.GenerateRefreshToken(user.Result),
+            };
+            
+            return authenticationResponse;
+        }
+        
+        var newUser = new User()
+        {
+            UserName = request.Email,
+            Email = request.Email,
+            FirstName = request.FirstName!.Trim(),
+            LastName = request.LastName!.Trim(),
+            FullName = request.LastName + " " + request.FirstName,
+            NickName = NicknameGeneratorUtil.GenerateNickname(),
+            AvatarUrl = request.AvatarUrl!
+        };
+        
+        var result = await _userManager.CreateAsync(newUser, "000000");
+        
+        Console.WriteLine("result: " + result.Succeeded);
+    
+        if (!result.Succeeded)
+        {
+            return null;
+        }
+
+        return new AuthenticationResponse
+        {
+            accessToken = _jwtService.GenerateAccessToken(newUser),
+            refreshToken = _jwtService.GenerateRefreshToken(newUser),
+        };
+
     }
 }

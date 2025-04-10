@@ -2,6 +2,7 @@
 using System.Security.Claims;
 using Application.Dto.Common;
 using Application.Dto.Request;
+using Application.Dto.Response;
 using Application.Services.Def;
 using CloudinaryDotNet;
 using Microsoft.AspNetCore.Authentication;
@@ -71,11 +72,12 @@ public class AuthController : ControllerBase
     [HttpGet("google-login")]
     public IActionResult GoogleLogin()
     {
+        var scheme = Request.Host.Host.Contains("localhost") ? "http" : "https";
+
         var properties = new AuthenticationProperties
         {
-            RedirectUri = Url.Action(nameof(GoogleCallback), "Auth", null, Request.Scheme)
+            RedirectUri = Url.Action(nameof(GoogleCallback), "Auth", null, scheme)
         };
-        Console.WriteLine("Redirect URI: " + Url.Action(nameof(GoogleCallback), "Auth", null, Request.Scheme));
         return Challenge(properties, GoogleDefaults.AuthenticationScheme);
     }
     
@@ -94,41 +96,40 @@ public class AuthController : ControllerBase
         }
 
         var claims = authenticateResult.Principal.Identities.FirstOrDefault()?.Claims;
+        
+        if (claims != null)
+        {
+            var enumerable = claims as Claim[] ?? claims.ToArray();
+
+            var email = enumerable?.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
+            var name = enumerable?.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
+            var givenName = enumerable?.FirstOrDefault(c => c.Type == ClaimTypes.GivenName)?.Value;
+            var familyName = enumerable?.FirstOrDefault(c => c.Type == ClaimTypes.Surname)?.Value;
+            var profilePicture = enumerable?.FirstOrDefault(c => c.Type == "urn:google:picture")?.Value;
             
-        foreach (var claim in claims)
-        {
-            Console.WriteLine($"Type: {claim.Type}, Value: {claim.Value}");
+            var userLogin = new GoogleAuthenticationRequest()
+            {
+                Email = email,
+                AvatarUrl = profilePicture,
+                FirstName = givenName,
+                LastName = familyName
+            };
+            var authenticationResponse = await _authService.GoogleLoginAsync(userLogin);
+            return Redirect(GetUrlGoogleCallBack(authenticationResponse));
         }
-
-        var email = claims?.FirstOrDefault(c => c.Type == ClaimTypes.Email)?.Value;
-        var name = claims?.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
-        var givenName = claims?.FirstOrDefault(c => c.Type == ClaimTypes.GivenName)?.Value;
-        var familyName = claims?.FirstOrDefault(c => c.Type == ClaimTypes.Surname)?.Value;
-        var profilePicture = claims?.FirstOrDefault(c => c.Type == "urn:google:picture")?.Value;
-        var googleId = claims?.FirstOrDefault(c => c.Type == ClaimTypes.NameIdentifier)?.Value;
-
-        if (string.IsNullOrEmpty(email))
-        { 
-            return Ok(new ApiResponse<object?>(
-                HttpStatusCode.BadRequest,
-                "Cannot get email from Google",
-                null
-            ));
-        }
-
-        var googleUser = new
-        {
-            GoogleId = googleId,
-            Email = email,
-            FullName = name,
-            FirstName = givenName,
-            LastName = familyName,
-            ProfilePicture = profilePicture
-        };
-        return Ok(new ApiResponse<object?>(
-            HttpStatusCode.OK,
-            "Login Google successful",
-            googleUser
-            ));
+        
+        return Redirect(GetUrlGoogleCallBack(null));
     }
+
+    private string GetUrlGoogleCallBack(AuthenticationResponse? response)
+    {
+        var frontendUrl = Request.Host.Host.Contains("localhost") ? "http://localhost:3000" : "https://todo-app-fe.onrender.com";
+        if (response == null)
+        {
+            return $"{frontendUrl}/google-handler?error=invalid_request";
+        }
+        var url = $"{frontendUrl}/google-handler?access={response.accessToken}&refresh={response.refreshToken}";
+        return url;
+    }
+
 }
