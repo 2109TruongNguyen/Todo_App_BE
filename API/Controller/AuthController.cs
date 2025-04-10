@@ -4,11 +4,9 @@ using Application.Dto.Common;
 using Application.Dto.Request;
 using Application.Dto.Response;
 using Application.Services.Def;
-using CloudinaryDotNet;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication.Google;
-using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 
@@ -72,12 +70,20 @@ public class AuthController : ControllerBase
     [HttpGet("google-login")]
     public IActionResult GoogleLogin()
     {
-        var scheme = Request.Host.Host.Contains("localhost") ? "http" : "https";
+        // var scheme = Request.Host.Host.Contains("localhost") ? "http" : "https";
+        //
+        // var properties = new AuthenticationProperties
+        // {
+        //     RedirectUri = Url.Action(nameof(GoogleCallback), "Auth", null, scheme)
+        // };
+        
+        var scheme = Request.Headers["X-Forwarded-Proto"].FirstOrDefault() ?? Request.Scheme;
 
         var properties = new AuthenticationProperties
         {
             RedirectUri = Url.Action(nameof(GoogleCallback), "Auth", null, scheme)
         };
+
         
         Console.WriteLine(properties.RedirectUri);
         

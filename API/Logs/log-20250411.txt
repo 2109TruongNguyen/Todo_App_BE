@@ -1,0 +1,10 @@
+2025-04-11 00:22:39.524 +07:00 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-04-11 00:23:54.408 +07:00 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-04-11 00:25:22.327 +07:00 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-04-11 00:29:29.789 +07:00 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-04-11 00:29:56.545 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-04-11 00:39:52.104 +07:00 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-04-11 00:40:42.270 +07:00 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-04-11 00:41:03.948 +07:00 [WRN] Failed to determine the https port for redirect.
+2025-04-11 00:44:11.755 +07:00 [WRN] Overriding address(es) 'http://localhost:5000'. Binding to endpoints defined via IConfiguration and/or UseKestrel() instead.
+2025-04-11 00:44:55.387 +07:00 [WRN] Failed to determine the https port for redirect.

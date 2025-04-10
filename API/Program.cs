@@ -1,6 +1,7 @@
 using API.Configuration;
 using API.Middelwares;
 using Application.Configuration;
+using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.OpenApi.Models;
 using Serilog;
 
@@ -90,6 +91,15 @@ app.UseMiddleware<ExceptionHandlerMiddelware>();
 app.UseHttpsRedirection();
 app.UseCors("AllowSpecificOrigins");
 app.UseRouting();
+
+if (app.Environment.IsProduction())
+{
+    app.UseForwardedHeaders(new ForwardedHeadersOptions
+    {
+        ForwardedHeaders = ForwardedHeaders.XForwardedProto | ForwardedHeaders.XForwardedFor,
+        ForwardLimit = null
+    });
+}
 app.UseAuthentication();
 app.UseAuthorization();
 
