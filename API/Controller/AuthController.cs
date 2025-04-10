@@ -132,7 +132,7 @@ public class AuthController : ControllerBase
 
     private string GetUrlGoogleCallBack(AuthenticationResponse? response)
     {
-        var frontendUrl = Request.Host.Host.Contains("localhost") ? "http://localhost:3000" : "https://todo-app-fe.onrender.com";
+        var frontendUrl = Request.Host.Host.Contains("localhost") ? "http://localhost:3000" : "https://todo-app-fe-y2al.onrender.com";
         if (response == null)
         {
             return $"{frontendUrl}/google-handler?error=invalid_request";
